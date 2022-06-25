@@ -1,0 +1,128 @@
+﻿@using Makale.Entities
+@model List<Not>
+
+@{ ViewBag.Title = "Index"; }
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            @Html.Partial("_PartialKategoriler")
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="row carousel-holder">
+
+                <div class="col-md-12">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img class="slide-image" src="https://picsum.photos/seed/picsum/800/300" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="https://picsum.photos/seed/picsum/800/300" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="slide-image" src="https://picsum.photos/seed/picsum/800/300" alt="">
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                @foreach (var item in Model)
+                {
+    <div class="col-sm-4 col-lg-4 col-md-4" data-notid="@item.Id">
+        <div class="thumbnail">
+            <img src="https://picsum.photos/seed/picsum/320/150" alt="">
+            <div class="caption">
+                <h4>
+                    <a href="#">@item.Baslik</a>
+                </h4>
+                <h6 class="text-right">
+                    <span class="glyphicon glyphicon-user"></span>  @item.Kullanici.KullaniciAdi <br />
+                    <span class="glyphicon glyphicon-time"></span>@item.DegistirmeTarihi.ToString("dd.MM.yy HH:mm")
+                </h6>
+
+                @if (string.IsNullOrEmpty(item.Icerik) == false && item.Icerik.Length > 70)
+                {
+                     <p>
+                         @(item.Icerik.Substring(0,70)+"...")
+                     </p>
+                     @*<a href="#" class="btn btn-default btn-xs">
+    devamı*@
+            <p>
+                <a tabindex="0" id="popoverId" class="btn btn-xs btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="@item.Baslik" data-content="@item.Icerik">devamı</a>
+             
+            </p> @*<span class="glyphicon glyphicon-chevron-right"></span>*@ }
+                else
+                {
+                    <p>
+                      @item.Icerik
+                    </p>
+                }
+
+
+            </div>
+            <div><hr /></div>
+            <div class="ratings">
+                <p class="pull-right">
+                    <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal" data-notid="@item.Id">
+                        <span class="glyphicon glyphicon-comment text-danger"></span>    Yorumlar
+                    </button>
+                </p>
+
+                <p>
+                    <button class="btn btn-default btn-xs" data-notid="@item.Id" data-liked="false">
+                        <span class="glyphicon glyphicon-heart-empty likekalp"></span>&nbsp;
+                        <span class="likesayisi">@item.BegeniSayisi</span>
+
+                    </button>
+
+                </p>
+            </div>
+        </div>
+    </div>}
+
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- /.container -->
+
+@section footer{
+    @Html.Partial("_PartialFooter")
+}
+
+@Bootstrap.ModalPopup(id: "myModal")
+
+<script src="~/Scripts/YorumScript.js"></script>
+<script src="~/Scripts/LikeScript.js"></script>
+
+<script>
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+</script>

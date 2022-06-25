@@ -1,0 +1,78 @@
+﻿@using Makale.Entities
+@model Kullanici
+
+@{
+    ViewBag.Title = "Profil Düzenle";
+}
+
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <h2>Kullanıcı Bilgileri</h2>
+    </div>
+
+    <div class="row">
+
+        @using (Html.BeginForm("ProfilDuzenle","Home",FormMethod.Post,new { enctype="multipart/form-data" }))
+        {
+            <div class="form-horizontal">
+               
+                <div class="col-md-3">
+                    <img src="~/image/@Model.ProfilResmi" class="img-circle" width="130" height="130" />
+                    <input type="file" name="profilresim" id="profilresim" class="form-control" />
+                </div>
+
+                <div class="col-md-9">
+
+                    @Html.ValidationSummary(false)
+                    @Html.HiddenFor(x=>x.Id)
+                    @Html.HiddenFor(x=>x.ProfilResmi)
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Adi, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(x => x.Adi, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Soyadi, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(x => x.Soyadi, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.KullaniciAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(x => x.KullaniciAdi, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.Sifre, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(x => x.Sifre, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Kaydet" class="btn btn-success" />
+                        @Html.ActionLink("İptal", "ProfilGoster", "Home", null, new { @class = "btn btn-default" })
+                    </div>
+
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>

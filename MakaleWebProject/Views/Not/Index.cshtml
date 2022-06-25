@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Makale.Entities.Not>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Makaleler</h2>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <p>
+            <a href="/Not/Create" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus"></span>
+                Yeni
+            </a>
+        </p>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kategori.Baslik)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Baslik)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Icerik)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BegeniSayisi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DegistirenKullanici)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kategori.Baslik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Baslik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Icerik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BegeniSayisi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DegistirenKullanici)
+                    </td>
+                    <td style="display:flex;">
+                        <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal" data-notid="@item.Id">
+                            <span class="glyphicon glyphicon-comment text-danger"></span>    Yorumlar
+                        </button>
+
+                        <a href="/Not/Edit/@item.Id" class="btn btn-warning btn-xs">
+                            <span class="glyphicon glyphicon-edit"></span>  Düzenle
+                        </a>
+
+                        <a href="/Not/Details/@item.Id" class="btn btn-info btn-xs">
+                            <span class="glyphicon glyphicon-search"></span>  Detay
+                        </a>
+
+                        <a href="/Not/Delete/@item.Id" class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-trash"></span>  Sil
+                        </a>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+@Bootstrap.ModalPopup(id: "myModal")
+
+<script src="~/Scripts/YorumScript.js"></script>

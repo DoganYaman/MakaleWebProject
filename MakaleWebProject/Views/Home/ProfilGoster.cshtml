@@ -1,0 +1,38 @@
+﻿@using Makale.Entities
+@model Kullanici
+
+@{
+    ViewBag.Title = "Profiliniz";
+}
+
+
+<div class="container">
+    <div class="row">
+        <h2>Kullanıcı Bilgileri</h2>
+    </div>
+    <div class="row">
+
+        <div class="col-md-2">
+            <img src="~/image/@Model.ProfilResmi" class="img-circle" width="130" height="130" />
+        </div>
+        <div class="col-md-8">
+            <h3>@(Model.Adi+" "+Model.Soyadi)</h3>
+            <br />
+            <h5><b>Username:</b>@Model.KullaniciAdi</h5>
+            <h5><b>Email:</b>@Model.Email</h5>
+        </div>
+        <div class="col-md-2 text-right">
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Seçenekler
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="/Home/ProfilDuzenle"><span class="glyphicon glyphicon-edit"></span>Değiştir</a></li>
+                    <li><a href="/Home/ProfilSil" onclick="return confirm('Silmek istediğinize emin misiniz?');"><span class="glyphicon glyphicon-trash"></span>Sil</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

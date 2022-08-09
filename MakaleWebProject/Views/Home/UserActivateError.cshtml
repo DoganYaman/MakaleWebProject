@@ -1,0 +1,41 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "Geçersiz İşlem";
+}
+
+<h2>Geçersiz İşlem</h2>
+
+<link href="~/Content/Login.css" rel="stylesheet" />
+
+<section class="login-info">
+    <div class="container">
+        <div class="row main">
+            <div class="form-header">
+                <h1 class="text-center ">Yönlendiriliyorsunuz... </h1>
+            </div>
+            <div class="main-content">
+                <div class="text-success">
+                    <h2><span class="glyphicon glyphicon-ok"></span>Geçersiz İşlem</h2>
+                    <hr />
+                    <p>                      
+
+                        @foreach (var item in Model)
+                        {
+                            @item <br />
+                        }
+
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    setTimeout(function () {
+        window.location = "/Home/Index";
+    }, 4000);
+
+</script>

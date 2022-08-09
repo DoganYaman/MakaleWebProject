@@ -1,0 +1,19 @@
+﻿@using MakaleWebProject.Models
+@using Makale.Entities
+
+@{   
+    List<Kategori> liste = CacheHelper.KategoriCahce();
+}
+
+<p class="lead">Kategoriler</p>
+<div class="list-group">
+
+    <a href="/Home/Index" class="list-group-item"><span class="glyphicon glyphicon-align-right"></span>Tümü</a>
+
+    @foreach (Kategori kat in liste)
+    {
+        <a href="/Home/Kategori/@kat.Id" class="list-group-item" title="@kat.Aciklama"><span class="glyphicon glyphicon-align-right"></span>@kat.Baslik</a>
+    }
+
+
+</div>

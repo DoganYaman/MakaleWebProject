@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Hesabınız Aktifleştirildi";
+}
+
+<h2>Hesabınız Aktifleştirildi</h2>
+
+<link href="~/Content/Login.css" rel="stylesheet" />
+
+<section class="login-info">
+    <div class="container">
+        <div class="row main">
+            <div class="form-header">
+                <h1 class="text-center ">Yönlendiriliyorsunuz... </h1>
+            </div>
+            <div class="main-content">
+                <div class="text-success">
+                    <h2><span class="glyphicon glyphicon-ok"></span>Hesabınız Aktifleştirildi</h2>
+                    <hr />
+                    <p>
+                        Hesabınız aktifleştirildi. Artık not paylaşabilir,yorum ve beğeni yapabilisiniz.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    setTimeout(function () {
+        window.location = "/Home/Login";
+    }, 4000);
+
+</script>

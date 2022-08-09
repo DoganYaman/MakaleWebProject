@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Yetkisiz Erisim";
+}
+
+
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <h2>
+            <span class="glyphicon glyphicon-remove-circle"></span>
+            Yetkisiz Erisim
+        </h2>
+        <p>
+            Bu sayfaya erişim yetkiniz bulunmamaktadır.
+        </p>
+        <br />
+        @Html.ActionLink("Ana sayfaya git!", "Index", "Home", null, new { @class = "btn btn-default" })
+    </div>
+</div>
+
+
